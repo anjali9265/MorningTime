@@ -33,7 +33,7 @@
        <h1 id="logo"><a href="#">Urgan Gear</a></h1>
      </div>
      <ul class="nav navbar-nav">
-       <li class="active"><a href="#">Home</a></li>
+       <li class="active"><a href="index.php">Home</a></li>
        <li><a href="#">Support</a></li>
        <li><a href="#">My Account</a></li>
      </ul>
@@ -71,7 +71,7 @@
     			<div class="container-fliud">
     				<div class="wrapper row">
     					<div class="preview col-md-6">
-
+                <form method="GET" action="cart.php">
     						<div class="preview-pic tab-content">
     						   <img src="<?php echo $temp['img1']; ?>" alt="" style="width:250px;height:250px;"/>
     						</div>
@@ -89,10 +89,11 @@
     							<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
     						</h5>
     						<div class="action">
-    							<button class="add-to-cart btn btn-default" type="button">Add to cart</button>
+    							<input type="submit" class="add-to-cart btn btn-default" value="Add to cart">
+                   <input type="hidden" name="name" value="<?php echo $temp['name']; ?>"/>
                   <button class="add-to-cart btn btn-default" type="button">Buy Now</button>
     						</div>
-
+              </form>
                 <br>
                 <div class="preview-thumbnail nav nav-tabs">
     						  <img src="<?php echo $temp['img1']; ?>" alt="" />
