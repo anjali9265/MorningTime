@@ -1,3 +1,11 @@
+<?php
+  include "connection.php";
+  $id=$_GET['id'];
+  $sql="SELECT * FROM `images`,`product`,`size`";
+	$result=mysqli_query($connection,$sql);
+  $temp=mysqli_fetch_array($result);
+ ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -42,19 +50,9 @@
 
 		<!-- Search, etc -->
 		<div class="options">
-			<div class="search">
-				<form action="" method="post">
-					<span class="field"><input type="text" class="blink" value="SEARCH" title="SEARCH" /></span>
-					<input type="text" class="search-submit" value="GO" />
-				</form>
-			</div>
-			<span class="left"><a href="#">Advanced Search</a></span>
 
 			<div class="right">
-				<span class="cart">
-					<a href="#" class="cart-ico">&nbsp;</a>
-					<strong>$0.00</strong>
-				</span>
+
 				<span class="left more-links">
 					<a href="#">Checkout</a>
 					<a href="#">Details</a>
@@ -67,15 +65,47 @@
 		<div id="content">
 
 
-			<!-- Container -->
+      <!-- Container -->
 			<div id="container">
-				<div class="image">
-					<img src="css/images/image1.jpg" alt=""/>
-				</div>
-				<div class="tabbed">
+        <div class="card">
+    			<div class="container-fliud">
+    				<div class="wrapper row">
+    					<div class="preview col-md-6">
 
+    						<div class="preview-pic tab-content">
+    						   <img src="<?php echo $temp['img1']; ?>" alt="" style="width:250px;height:250px;"/>
+    						</div>
+              </div>
+              <div class="details col-md-6">
+                <h3 class="product-title"><?php echo $temp['brand'];?> <?php echo $temp['name']; ?></h3>
+                <span class="review-no">41 reviews</span>
+                <p class="product-description"><?php echo $temp['description']; ?></p>
+    						<h4 class="price"><span>Rs.<?php echo $temp['price']; ?> now <?php echo $temp['discount']; ?>% off</span></h4>
+    						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+                <h5 class="sizes">sizes:
+    							<span class="size" data-toggle="tooltip" title="small">s</span>
+    							<span class="size" data-toggle="tooltip" title="medium">m</span>
+    							<span class="size" data-toggle="tooltip" title="large">l</span>
+    							<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+    						</h5>
+    						<div class="action">
+    							<button class="add-to-cart btn btn-default" type="button">Add to cart</button>
+                  <button class="add-to-cart btn btn-default" type="button">Buy Now</button>
+    						</div>
 
-				</div>
+                <br>
+                <div class="preview-thumbnail nav nav-tabs">
+    						  <img src="<?php echo $temp['img1']; ?>" alt="" />
+    						  <img src="<?php echo $temp['img2']; ?>" alt="" />
+                  <img src="<?php echo $temp['img3']; ?>" alt="" />
+                  <img src="<?php echo $temp['img4']; ?>" alt="" />
+    						</div>
+
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+</div>
 
 
 
@@ -105,6 +135,5 @@
 	</div>
 </div>
 <!-- End Main -->
-
 </body>
 </html>
